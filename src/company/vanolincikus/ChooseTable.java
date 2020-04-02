@@ -1,4 +1,4 @@
-package com.company;
+package company.vanolincikus;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class ChooseTable extends JPanel implements ActionListener {
 
     public AcademyBarFrame frame;
+    public Order order;
 
     public JButton table1Button;
     public JButton table2Button;
@@ -41,7 +42,7 @@ public class ChooseTable extends JPanel implements ActionListener {
             if(order.tableNumber == tableNumer) {
                 System.out.println("Намерих поръчка");
                 isOrderFound = true;
-                orderFoundAction();
+                orderFoundAction(order);
                 break;
             }
         }
@@ -54,7 +55,7 @@ public class ChooseTable extends JPanel implements ActionListener {
     }
 
     //
-    public void orderFoundAction() {
+    public void orderFoundAction(Order order) {
         //New order 1 -> Изкарвам попъп и му казвам, че вече има поръчка - DONE
         //Existing 2 -> Минавам на следващият екран
         //Get bill 3 -> Минавам на следващият екран
@@ -63,10 +64,10 @@ public class ChooseTable extends JPanel implements ActionListener {
             JOptionPane.showMessageDialog(null,"This table already has order","Error",JOptionPane.ERROR_MESSAGE);
         } else if(selectedOperation == 2) {
             System.out.println("Add to existing");
-            frame.showProductPanel();
+            frame.showProductPanel(order);
         } else {
             System.out.println("Get bill");
-            //frame.showGetBillPanel();
+            frame.showBillPanel(order);
         }
     }
     public void orderNotFoundAction(int tableNumber) {
@@ -75,16 +76,16 @@ public class ChooseTable extends JPanel implements ActionListener {
         //Get bill 3 -> Попъп, че няма поръчка на тази маса и не може да се вади сметката
         if(selectedOperation == 1) {
             System.out.println("New Order");
-            Order newOrder = new Order(tableNumber, frame.currentWaitress);
-            frame.orders.add(newOrder);
-            frame.showProductPanel();
+            Order order = new Order(tableNumber, frame.currentWaitress);
+            frame.orders.add(order);
+            frame.showProductPanel(order);
         } else if(selectedOperation == 2) {
             System.out.println("Add to existing");
             int result = JOptionPane.showConfirmDialog(null,"There is no order for this table, would like to create a new one?","Warning",JOptionPane.YES_NO_OPTION);
             if(result == JOptionPane.YES_OPTION) {
-                Order newOrder = new Order(tableNumber, frame.currentWaitress);
-                frame.orders.add(newOrder);
-                frame.showProductPanel();
+                Order order = new Order(tableNumber, frame.currentWaitress);
+                frame.orders.add(order);
+                frame.showProductPanel(order);
             }
         } else {
             System.out.println("Get bill");

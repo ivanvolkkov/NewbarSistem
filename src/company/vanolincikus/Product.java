@@ -1,4 +1,4 @@
-package com.company;
+package company.vanolincikus;
 
 public class Product {
 
@@ -12,7 +12,8 @@ public class Product {
         this.price = price;
     }
 
-    public String toString() {
-        return this.name;
-    }
+   public String toString(){
+        return this.name + this.quantity + this.price;
+
+   }
 }

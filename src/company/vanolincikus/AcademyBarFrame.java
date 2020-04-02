@@ -1,4 +1,6 @@
-package com.company;
+package company.vanolincikus;
+
+import company.vanolincikus.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ public class AcademyBarFrame extends JFrame {
     public OperationPanel operationPanel;
     public ChooseTable tablesPanel;
     public ProductPanel productPanel;
+    public GetBillPanel getBillPanel;
 
     public ArrayList<Order> orders = new ArrayList<>();
     public ArrayList<Waitress> waitresses = new ArrayList<>();
@@ -24,12 +27,14 @@ public class AcademyBarFrame extends JFrame {
     }
 
     public void showLoginPanel() {
+
         loginPanel = new LoginPanel(this);
         loginPanel.setSize(getWidth(), getHeight());
         add(loginPanel);
     }
 
     public void showOperationPanel() {
+
         loginPanel.setVisible(false);
         remove(loginPanel);
 
@@ -47,13 +52,24 @@ public class AcademyBarFrame extends JFrame {
         tablesPanel.setSize(getWidth(), getHeight());
         add(tablesPanel);
     }
-    public void showProductPanel(){
+    public void showProductPanel(Order order){
         tablesPanel.setVisible(false);
         remove(tablesPanel);
 
-        productPanel = new ProductPanel(this);
+        productPanel = new ProductPanel(this,order);
         productPanel.setSize(getWidth(),getHeight());
         add(productPanel);
+
+    }
+
+    public void showBillPanel(Order order){
+        tablesPanel.setVisible(false);
+        remove(tablesPanel);
+
+       getBillPanel = new GetBillPanel(this,order);
+       getBillPanel.setSize(getWidth(),getHeight());
+           add(getBillPanel);
+
 
     }
 }
