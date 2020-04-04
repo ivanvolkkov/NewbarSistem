@@ -26,11 +26,7 @@ public class GetBillPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        frame.getBillPanel.setVisible(false);
-        remove(frame.getBillPanel);
-        order.products.clear();
-        frame.showOperationPanel();
+        frame.showLoginPanel();
     }
 
 

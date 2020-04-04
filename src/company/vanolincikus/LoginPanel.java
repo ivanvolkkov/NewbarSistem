@@ -2,10 +2,9 @@ package company.vanolincikus;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-public class LoginPanel extends JPanel implements ActionListener {
+public class LoginPanel extends JPanel implements ActionListener, MouseListener {
 
     public JTextField pinField;
     public JButton enterButton;
@@ -18,6 +17,7 @@ public class LoginPanel extends JPanel implements ActionListener {
 
         pinField = new JTextField("Enter pin");
         add(pinField);
+        pinField.addMouseListener(this);
 
         enterButton = new JButton("Enter");
         enterButton.addActionListener(this);
@@ -39,6 +39,34 @@ public class LoginPanel extends JPanel implements ActionListener {
                 break;
             }
         }
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(pinField.getText().equals("Enter pin")){
+            pinField.setText("");
+        }
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
 
     }
 }

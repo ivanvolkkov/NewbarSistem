@@ -27,6 +27,10 @@ public class AcademyBarFrame extends JFrame {
     }
 
     public void showLoginPanel() {
+        if (getBillPanel != null) {
+            getBillPanel.setVisible(false);
+            remove(getBillPanel);
+        }
 
         loginPanel = new LoginPanel(this);
         loginPanel.setSize(getWidth(), getHeight());
@@ -52,23 +56,24 @@ public class AcademyBarFrame extends JFrame {
         tablesPanel.setSize(getWidth(), getHeight());
         add(tablesPanel);
     }
-    public void showProductPanel(Order order){
+
+    public void showProductPanel(Order order) {
         tablesPanel.setVisible(false);
         remove(tablesPanel);
 
-        productPanel = new ProductPanel(this,order);
-        productPanel.setSize(getWidth(),getHeight());
+        productPanel = new ProductPanel(this, order);
+        productPanel.setSize(getWidth(), getHeight());
         add(productPanel);
 
     }
 
-    public void showBillPanel(Order order){
+    public void showBillPanel(Order order) {
         tablesPanel.setVisible(false);
         remove(tablesPanel);
 
-       getBillPanel = new GetBillPanel(this,order);
-       getBillPanel.setSize(getWidth(),getHeight());
-           add(getBillPanel);
+        getBillPanel = new GetBillPanel(this, order);
+        getBillPanel.setSize(getWidth(), getHeight());
+        add(getBillPanel);
 
 
     }

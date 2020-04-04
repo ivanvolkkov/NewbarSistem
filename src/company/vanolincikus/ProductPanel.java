@@ -63,13 +63,13 @@ public class ProductPanel extends JPanel implements ActionListener {
 
             if ( result == JOptionPane.YES_OPTION){
                 frame.orders.add(order);
+                System.out.println(frame.orders.toString());
                 frame.productPanel.setVisible(false);
                 remove(frame.productPanel);
-                frame.showOperationPanel();
+                frame.showLoginPanel();
+
             }
-            else{
-                remove(order);
-            }
+
         }
 
         else if (e.getSource() == eraseButton){
@@ -82,9 +82,6 @@ public class ProductPanel extends JPanel implements ActionListener {
 
     }
 
-    private void remove(Order order) {
 
-        remove(this.order);
-    }
 
 }
