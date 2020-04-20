@@ -1,4 +1,4 @@
-package company.vanolincikus;
+package company.vanolincikus.panels;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

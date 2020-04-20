@@ -1,4 +1,6 @@
-package company.vanolincikus;
+package company.vanolincikus.panels;
+
+import company.vanolincikus.models.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -34,12 +36,12 @@ public class ChooseTable extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String tableNumberString = ((JButton)e.getSource()).getText();
+        String tableNumberString = ((JButton) e.getSource()).getText();
         int tableNumer = Integer.parseInt(tableNumberString);
 
         boolean isOrderFound = false;
-        for(Order order : frame.orders) {
-            if(order.tableNumber == tableNumer) {
+        for (Order order : frame.getOrders()) {
+            if (order.tableNumber == tableNumer) {
                 System.out.println("Намерих поръчка");
                 isOrderFound = true;
                 orderFoundAction(order);
@@ -47,7 +49,7 @@ public class ChooseTable extends JPanel implements ActionListener {
             }
         }
 
-        if(isOrderFound == false) {
+        if (isOrderFound == false) {
             System.out.println("Nqma pory4ka na tazi masa v momenta");
             orderNotFoundAction(tableNumer);
         }
@@ -59,10 +61,10 @@ public class ChooseTable extends JPanel implements ActionListener {
         //New order 1 -> Изкарвам попъп и му казвам, че вече има поръчка - DONE
         //Existing 2 -> Минавам на следващият екран
         //Get bill 3 -> Минавам на следващият екран
-        if(selectedOperation == 1) {
+        if (selectedOperation == 1) {
             System.out.println("New Order");
-            JOptionPane.showMessageDialog(null,"This table already has order","Error",JOptionPane.ERROR_MESSAGE);
-        } else if(selectedOperation == 2) {
+            JOptionPane.showMessageDialog(null, "This table already has order", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (selectedOperation == 2) {
             System.out.println("Add to existing");
             frame.showProductPanel(order);
         } else {
@@ -70,26 +72,28 @@ public class ChooseTable extends JPanel implements ActionListener {
             frame.showBillPanel(order);
         }
     }
+
     public void orderNotFoundAction(int tableNumber) {
         //New order 1 -> Създам една нова поръчка и да я добавя в масива с поръчки да мина на следващият екран
         //Existing 2 -> Трябва да му покажа попъп, че няма поръчка, която да продължи на тази маса и съответно да го попитам дали иска да направи нова поръчка
         //Get bill 3 -> Попъп, че няма поръчка на тази маса и не може да се вади сметката
-        if(selectedOperation == 1) {
+        if (selectedOperation == 1) {
             System.out.println("New Order");
             Order order = new Order(tableNumber, frame.currentWaitress);
-            frame.orders.add(order);
+            frame.getOrders().add(order);
             frame.showProductPanel(order);
-        } else if(selectedOperation == 2) {
+        }
+        else if (selectedOperation == 2) {
             System.out.println("Add to existing");
-            int result = JOptionPane.showConfirmDialog(null,"There is no order for this table, would like to create a new one?","Warning",JOptionPane.YES_NO_OPTION);
-            if(result == JOptionPane.YES_OPTION) {
+            int result = JOptionPane.showConfirmDialog(null, "There is no order for this table, would like to create a new one?", "Warning", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
                 Order order = new Order(tableNumber, frame.currentWaitress);
-                frame.orders.add(order);
+                frame.getOrders().add(order);
                 frame.showProductPanel(order);
             }
         } else {
             System.out.println("Get bill");
-            JOptionPane.showMessageDialog(null,"There is no order for this table!","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "There is no order for this table!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -1,4 +1,4 @@
-package company.vanolincikus;
+package company.vanolincikus.models;
 
 public class Waitress {
 

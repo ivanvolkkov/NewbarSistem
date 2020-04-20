@@ -1,5 +1,8 @@
 package company.vanolincikus;
 
+import company.vanolincikus.models.*;
+import company.vanolincikus.panels.*;
+
 public class Main {
 
     public static void main(String[] args) {

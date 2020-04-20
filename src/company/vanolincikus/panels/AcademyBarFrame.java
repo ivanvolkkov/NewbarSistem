@@ -1,6 +1,6 @@
-package company.vanolincikus;
+package company.vanolincikus.panels;
 
-import company.vanolincikus.*;
+import company.vanolincikus.models.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -13,7 +13,9 @@ public class AcademyBarFrame extends JFrame {
     public ProductPanel productPanel;
     public GetBillPanel getBillPanel;
 
-    public ArrayList<Order> orders = new ArrayList<>();
+
+
+    private ArrayList<Order> orders = new ArrayList<>();
     public ArrayList<Waitress> waitresses = new ArrayList<>();
     public ArrayList<Product> products = new ArrayList<>();
     public Waitress currentWaitress;
@@ -76,5 +78,8 @@ public class AcademyBarFrame extends JFrame {
         add(getBillPanel);
 
 
+    }
+    public ArrayList<Order> getOrders() {
+        return orders;
     }
 }

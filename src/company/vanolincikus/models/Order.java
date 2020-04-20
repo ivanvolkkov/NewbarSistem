@@ -1,6 +1,6 @@
-package company.vanolincikus;
+package company.vanolincikus.models;
 
-import company.vanolincikus.*;
+import company.vanolincikus.panels.*;
 
 import java.util.ArrayList;
 
@@ -32,9 +32,8 @@ public class Order {
         return finalText;
     }
 
-    private void remove(Order order) {
-
-        frame.orders.remove(order);
+    public void remove(Order order) {
+        frame.getOrders().remove(order);
     }
 
 }
