@@ -12,6 +12,7 @@ public class AcademyBarFrame extends JFrame {
     public ChooseTable tablesPanel;
     public ProductPanel productPanel;
     public GetBillPanel getBillPanel;
+    public AdminPanel adminPanel;
 
 
 
@@ -77,6 +78,16 @@ public class AcademyBarFrame extends JFrame {
         getBillPanel.setSize(getWidth(), getHeight());
         add(getBillPanel);
 
+
+    }
+    public void showAdminPannel(){
+
+        loginPanel.setVisible(false);
+        remove(loginPanel);
+
+        adminPanel = new AdminPanel(this);
+        adminPanel.setSize(getWidth(),getHeight());
+        add(adminPanel);
 
     }
     public ArrayList<Order> getOrders() {

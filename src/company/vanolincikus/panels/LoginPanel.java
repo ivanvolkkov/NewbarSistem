@@ -12,8 +12,8 @@ public class LoginPanel extends JPanel implements ActionListener, MouseListener 
     public JTextField pinField;
     public JButton enterButton;
     public AcademyBarFrame frame;
-    public JTable table;
-    public DefaultTableModel tableModel;
+    public JButton adminPanelButton;
+
 
     public LoginPanel(AcademyBarFrame frame) {
         this.frame = frame;
@@ -28,19 +28,28 @@ public class LoginPanel extends JPanel implements ActionListener, MouseListener 
         enterButton.addActionListener(this);
         add(enterButton);
 
-        table = new JTable();
-        JScrollPane pane = new JScrollPane();
 
-        String columns[]= {"Name","Pincode"};
-        tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(columns);
-        table.setModel(tableModel);
-        pane.setViewportView(table);
-        add(pane);
+        adminPanelButton = new JButton("to Admin panel");
+        adminPanelButton.addActionListener(this);
+        add(adminPanelButton);
+
+
+
+
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource()== adminPanelButton){
+            for (Waitress waitress : frame.waitresses) {
+                if(pinField.getText().equals(waitress.pinCode)) {
+                   if(waitress.position.equals(Waitress.Position.ADMIN)){
+                       frame.showAdminPannel();
+                   }
+                }
+            }
+        }
 
         if(pinField.getText().length() < 4) {
             JOptionPane.showMessageDialog(null, "Pin cannot be less than 4 digits","Error", JOptionPane.ERROR_MESSAGE);

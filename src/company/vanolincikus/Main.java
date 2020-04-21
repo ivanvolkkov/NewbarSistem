@@ -1,5 +1,6 @@
 package company.vanolincikus;
 
+
 import company.vanolincikus.models.*;
 import company.vanolincikus.panels.*;
 
@@ -8,8 +9,8 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
 
-        Waitress a = new Waitress("Viktor", "0101");
-        Waitress b = new Waitress("Georgi", "0202");
+        Waitress a = new Waitress("Viktor", "0101", Waitress.Position.ADMIN);
+        Waitress b = new Waitress("Georgi", "0202", Waitress.Position.FORMER);
 
         Product product1 = new Product("Wiskey", "50ml", 6.00);
         Product product2 = new Product("Vodka", "50ml", 5.00);
